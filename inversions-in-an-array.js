@@ -46,6 +46,11 @@ otherwise the right side number that is being compared will be assigned to the n
         {
             arr[k++] = right[j++];
             console.log('right ' + arr)
+
+/* 
+this swaps formula is probably the most important part 
+not sure how we're able to know that early changes on the right side shouldn't be factored into our total inversions
+*/
             swaps += (m + 1) - (l + i);
             console.log(swaps)
         }
@@ -75,7 +80,7 @@ function mergeSortAndCount(arr, l, r) {
         let m = Math.floor((l+r) /2 );
 
 /* 
-- this is the recursion happening, it breaks down our initial array into tinier arrays until our array size is 2 or 1
+- this is the recursion happening, it breaks down our initial array into tinier arrays until our array size is 1
 - each time this happens we are sorting our array and also maintaining how many swaps are happening
 
 */
