@@ -39,4 +39,39 @@ function bestAnswer() {
   return result;
 }
 
-console.log(bestAnswer());
+// console.log(bestAnswer());
+
+var maxProfit = function (prices) {
+  let max = 0;
+  let left = 0;
+  let right = 1;
+  while (right < prices.length) {
+    const profit = prices[right] - prices[left];
+    if (profit > max) {
+      max = profit;
+    }
+    if (profit < 0) {
+      left = right;
+    }
+    right += 1;
+  }
+  return max;
+};
+
+function slidingWindow(prices) {
+  let result = 0;
+  let left = 0;
+  let right = 1;
+  while (right < prices.length) {
+    if (prices[right] - prices[left] > result) {
+      result = prices[right] - prices[left];
+    }
+    if (prices[left] > prices[right]) {
+      left = right;
+    }
+    right++;
+  }
+  return result;
+}
+
+console.log(slidingWindow(prices));
