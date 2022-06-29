@@ -83,6 +83,7 @@ MinStack.prototype.getMin = function () {
 // this is like a much more intuitive way of approaching this problem
 // we use the min array to help us track the min as we go and can also push to it separately
 // everytime we push we are going to check for the minimum and then push that into our min array
+// everything else is super easy
 
 class AnotherStack {
   constructor() {

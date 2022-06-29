@@ -58,6 +58,8 @@ var maxProfit = function (prices) {
   return max;
 };
 
+// basically like two pointers, you have a left and a right and keep adjusting until you go through
+// the entire string
 function slidingWindow(prices) {
   let result = 0;
   let left = 0;

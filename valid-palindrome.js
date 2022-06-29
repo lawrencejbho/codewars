@@ -1,4 +1,5 @@
 // somehow my first code was faster, I think it's something to do with the unnecessary if statement checks everytime
+// the regex will check for numbers and letters and strip everything else
 
 function palindrome(s) {
   var c = 1;
