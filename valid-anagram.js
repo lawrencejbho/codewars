@@ -1,3 +1,5 @@
+// keep in mind an anagram isn't the word in reverse, it just uses all of the same letters
+
 (s = "anagram"), (t = "nagaram");
 
 function anagram() {
@@ -28,6 +30,7 @@ function anagram() {
 console.log(anagram());
 
 //better way to do it, that is more concise with less comparisons
+
 
 function anagram2() {
   if (s.length !== t.length) {

@@ -24,7 +24,7 @@ function dfs(node) {
   return 1 + Math.max(dfs(node.left), dfs(node.right));
 }
 
-// * this is a more intuitive approach, here we are going to start at the root and then go down one level
+//* this is a more intuitive approach, here we are going to start at the root and then go down one level
 // at this point it finds a left and right and goes recursively
 // with each recursive call we are updating our max value based on the level, if there is no node then it breaks first
 var maxDepth = function (root) {
