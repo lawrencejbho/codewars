@@ -2,6 +2,8 @@ const nums = [-2, 1, -3, 4, -1, 2, 1, -5, 4];
 
 const nums2 = [5, 4, -1, 7, 8];
 
+// greedy algo
+
 // we are going to keep a running tally of the last numbers, if the last is greater than the next value
 // then we will add it to our last and continue.  If the next value is greater than our running total
 // then we know to start a new contiguous subarray and will reset the last to the value
