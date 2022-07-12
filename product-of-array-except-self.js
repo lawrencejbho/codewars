@@ -49,6 +49,10 @@ var productExceptSelf = function (nums) {
 // console.log(productExceptSelf(nums));
 
 // this is the proper way
+// basically you take two passes against the array
+// in the prefix you are multiplying everything together on the left side of your number
+// on the postfix you are multiplying everything together from the right side of the number
+// we can then multiply both sides together to get the correct number
 
 var productExceptSelf2 = function (nums) {
   let arr = [];
