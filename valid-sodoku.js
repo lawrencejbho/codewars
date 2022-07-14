@@ -83,7 +83,8 @@ var isValidSudoku2 = function (board) {
       boxes[boxNum].add(cell);
     }
   }
-  console.log(boxes);
+  console.log(rows);
+  console.log(columns);
   return true;
 };
 
