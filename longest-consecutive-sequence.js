@@ -8,6 +8,8 @@ let nums2 = [100, 4, 200, 1, 3, 2];
 // this continues as it searches the set for additional consecutive numbers until it doesn't
 // the max is then calculated based on the saved max value and the currentMax, lastly return the max
 
+// time complexity is O(n), space complexity is O(n)
+
 function longestConsecutive(nums) {
   const set = new Set(nums);
   let max = 0;
