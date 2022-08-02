@@ -1,4 +1,4 @@
-const nums = [-1, 0, 3, 5, 7, 12];
+// const nums = [-1, 0, 3, 5, 7, 12];
 
 // basically we have a min and max value that will keep pushing inwards until it finds the value
 // when it doesn't find the value, min and max still contract towards the index where the value should be
@@ -25,4 +25,24 @@ function binarySearch(nums, target) {
   return -1;
 }
 
-console.log(binarySearch(nums, 6));
+// console.log(binarySearch(nums, 6));
+
+const nums = [-1, 0, 3, 5, 9, 12];
+
+function bSearch(nums, target) {
+  let min = 0;
+  let max = nums.length - 1;
+  while (min <= max) {
+    let mid = Math.floor((min + max) / 2);
+    if (target > nums[mid]) {
+      min = mid + 1;
+    } else if (target < nums[mid]) {
+      max = mid - 1;
+    } else {
+      return mid;
+    }
+  }
+  return -1;
+}
+
+console.log(bSearch(nums, 5));
