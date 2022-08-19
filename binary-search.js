@@ -46,3 +46,22 @@ function bSearch(nums, target) {
 }
 
 console.log(bSearch(nums, 5));
+
+// playing around with returning max or mid and changing if using max = mid -1 or max = mid
+function bSearch2(nums, target) {
+  let min = 0;
+  let max = nums.length - 1;
+  while (min <= max) {
+    let mid = Math.floor((min + max) / 2);
+    if (target > nums[mid]) {
+      min = mid + 1;
+    } else if (target < nums[mid]) {
+      max = mid;
+    } else if ((target = nums[mid])) {
+      return mid;
+    }
+  }
+  return -1;
+}
+
+console.log(bSearch2(nums, 5));

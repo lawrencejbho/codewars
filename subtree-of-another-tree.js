@@ -1,12 +1,9 @@
-var isSubtree = function (root, subRoot) {
-  if (!root && !subRoot) return true;
-  if (!root || !subRoot) return false;
-  else if (root.val == subRoot.val) {
-    isSameTree(root, subRoot);
-  } else {
-    isSubtree(root.left) && isSubtree(root.right);
-  }
+// so you first need to use the same code on how to check for the sameTree
+// next we use a similar dfs approach where we are going to traverse the first tree and go through each node
+// base case is no node, otherwise use our first recursive function to check if we got a same tree
+// if we don't, then we keep recursing left and right to check out each of the additional nodes in the tree
 
+var isSubtree = function (root, subRoot) {
   function isSameTree(p, q) {
     if (!p & !q) return true;
     if (!p || !q) return false;
@@ -25,5 +22,5 @@ var isSubtree = function (root, subRoot) {
     }
   }
 
-  dfs(root);
+  return dfs(root);
 };
