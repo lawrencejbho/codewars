@@ -26,9 +26,15 @@ class SinglyLinkedList {
   }
 }
 
-// first create a blank node and then assign it to a variable so we can use it for later
-// we go through each list checking for which node is greater, assign that as the next for our new list,
-// also need to update our current to point to the new node after assigning it as the next, then use the next on the original list
+/* 
+first create a blank node and then assign it to a variable so we can use it for later  *use ListNode in leetcode 
+we go through each list checking for which node is greater, assign that as the next for our new list,
+also need to update our current to point to the new node after assigning it as the next, then update the original lists
+so that it points to it's next.  When we reach the end of a single list, we can just attach the rest of the other list
+to our current.next as we've been updating it as we go.  Return our dummy.next at the end.  Otherwise we don't have a 
+head in this case so we gotta make our own like that.
+
+*/
 function mergeTwoLists(l1, l2) {
   let current = new Node();
   const dummy = current;
@@ -45,8 +51,6 @@ function mergeTwoLists(l1, l2) {
     }
   }
 
-  // this part I'm not sure about, once we get to null we assign the rest of the list
-  // but not sure what happens if we have multiple values left in the remaining list
   if (!l1) current.next = l2;
   if (!l2) current.next = l1;
   return dummy.next;
