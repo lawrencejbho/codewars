@@ -2,6 +2,8 @@
 
 More of a design problem than an algorithms but still asked a lot.
 
+First need a Node and DoublyLinkedList class.  Doubly Linked List will start with two nodes.  The two nodes will make it a lot easier to insert and add nodes 
+
 
 */
 
@@ -23,6 +25,8 @@ class DoublyLinkedList {
   }
 }
 
+// this is going to insert our first node between the two original nodes
+// subsequent nodes get inserted next to the this.head Node
 DoublyLinkedList.prototype.insert = function (node) {
   node.prev = this.head;
   node.next = this.head.next;
@@ -30,6 +34,7 @@ DoublyLinkedList.prototype.insert = function (node) {
   this.head.next = node;
 };
 
+// normal removing a node and updating the .next and .prev
 DoublyLinkedList.prototype.remove = function (node) {
   // console.log("trying to remove node:", node.key)
   let prev = node.prev;
