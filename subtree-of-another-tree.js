@@ -24,3 +24,5 @@ var isSubtree = function (root, subRoot) {
 
   return dfs(root);
 };
+
+console.log(true || false);
