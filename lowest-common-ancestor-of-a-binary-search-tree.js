@@ -1,14 +1,16 @@
-// there is some magic here in that we are running the recursion and the nodes will have an ancestor
-// once they start to diverge
+// There's something very weird on this problem where you need to specify .val on your p and q or it'll just keep
+// returning the wrong answer
 
-// I modified this solution to make more sense, put the if(!n) to return null, but it's actually implicit where
-// if the n doesn't exist it is null and will return itself as null
+//* This problem is much easier to understand if you draw it out with numbers. Keep in mind it is a BST.
+// If the two targets are less than the root then you go left and vice versa.
+// If one root is bigger and one is less then we are at the divergent root and we just return the root.
+// Complexity is log(n).  We only have to visit 1 node for each level in the tree.  So complexity is the height of the tree.
 
-// we are going to dfs through the tree and find the two nodes that we're looking for
-// when we find these nodes, we will return themselves and anything else is null
-// because it's a binary search tree, in the case where we do find both nodes, no conditions are met so we return the ancestor
+// we are going to dfs through the tree and find the two roots that we're looking for
+// when we find these roots, we will return themselves and anything else is null
+// because it's a binary search tree, in the case where we do find both roots, no conditions are met so we return the ancestor
 // otherwise we would just get null
-// also consider if the two nodes are connected to each other, the top node would be the final return
+// also consider if the two roots are connected to each other, the top root would be the final return
 // I think if we get a null at the bottom it will keep returning null as it goes up, but not sure how that works here
 
 var lowestCommonAncestor = function (root, p, q) {
@@ -26,19 +28,28 @@ var lowestCommonAncestor = function (root, p, q) {
   return lca(root);
 };
 
-// because it's a binary search tree, it should be less on the left side and greater on the right side
-// this helps you find the right value
-// the first if statement is looking for the node that satisfies both requirements of looking for p and q, otherwise continue dfs
+// here is a much more concise solution.  If we don't meet the requirements we return the current root. Otherwise dfs.
 
-var lowestCommonAncestor = function (root, p, q) {
-  if (
-    (p.val <= root.val && q.val >= root.val) ||
-    (q.val <= root.val && p.val >= root.val)
-  ) {
-    return root;
-  } else if (p.val < root.val && q.val < root.val) {
+function lowestCommonAncestor(root, p, q) {
+  if (root.val > p.val && root.val > q.val) {
     return lowestCommonAncestor(root.left, p, q);
-  } else if (p.val > root.val && q.val > root.val) {
+  } else if (root.val < p.val && root.val < q.val) {
     return lowestCommonAncestor(root.right, p, q);
+  } else {
+    return root;
   }
-};
+}
+
+// Here's another way to solve this problem using a while loop.
+
+function lowestCommonAncestor(root, p, q) {
+  while (root !== null) {
+    if (root.val < p.val && root.val < q.val) {
+      root = root.right;
+    } else if (root.val > p.val && root.val > q.val) {
+      root = root.left;
+    } else {
+      return root;
+    }
+  }
+}
