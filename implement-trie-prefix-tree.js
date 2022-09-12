@@ -6,7 +6,7 @@ class Trie {
   }
 
   // think of a trie as basically assigning objects within an object
-  // if the letter is missing, we add the letter as an object to the last object and then move to that node
+  // if the letter is missing, we add the letter as an object/property to the last object and then move to that node
   // isWord is a property that get assigned to the last letter in the word
   insert(word) {
     let cur = this.root;
@@ -28,7 +28,7 @@ class Trie {
     return cur !== null && cur.isWord == true;
   }
 
-  // exact same thing as Traverse
+  // almost same as search
   startsWith(prefix) {
     let cur = this.root;
     for (let c of prefix) {
