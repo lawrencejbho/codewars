@@ -9,7 +9,7 @@
 
 // * there is no built in heap in js, but leetcode let's us use a priority queue library
 // one thing to note about the priority queue is you can't access it like an array, so you have to use the built in
-// funcitons like front to get the first element or size in order to get the length+1
+// functions like front to get the first element or size in order to get the length+1
 
 // create priority queue and for each element in the nums array, we are going to enqueue - this will automatically sort it
 // now we are going to pop all the elements that are greater than k
