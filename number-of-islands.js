@@ -1,34 +1,31 @@
+// the neetcode solution uses a set but that may take some effort as it's hard to save a tuple in js
+
 function numIslands(grid) {
-  if (grid.length == 0) return 0;
-
-  let rows = grid.length;
-  let cols = grid[0].length;
-  let visit = new Set();
-  let islands = 0;
-
-    def bfs(r,c) {
-
-        let queue = [collections.deque()]
-        visit.add(`${r}+${c}`)
-        queue.push(`${r}+${c}`)
-
-        while (queue.length)
-            row = 
-            directions = [[1,0], [-1,0], [0,1], [0,-1]]
-
-            for (dr,dc in directions) { 
-                if ((r+dr) in rows.length() && (c+dc) in cols.length() && )
-            }
+  let count = 0;
+  function dfs(x, y) {
+    if (y < 0 || y >= grid[0].length || x < 0 || x >= grid.length) {
+      return;
     }
 
+    if (grid[x][y] === "1") {
+      grid[x][y] = "0";
+    } else {
+      return;
+    }
 
-  for (let i = 0; i < rows; i++) {
-    for (letj = 0; j < cols; j++) {
-      if (grid[r][c] == "1" && !visit.has(`${r}+${c}`)) {
-        bfs(r, c);
-        islands += 1;
+    dfs(x + 1, y);
+    dfs(x - 1, y);
+    dfs(x, y + 1);
+    dfs(x, y - 1);
+  }
+
+  for (let i = 0; i < grid.length; i++) {
+    for (let j = 0; j < grid[i].length; j++) {
+      if (grid[i][j] === "1") {
+        count++;
+        dfs(i, j);
       }
     }
   }
-  return islands
+  return count;
 }
