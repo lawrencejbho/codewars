@@ -36,6 +36,7 @@ DoublyLinkedList.prototype.insert = function (node) {
   this.head.next.prev = node;
   this.head.next = node;
 };
+s;
 
 // also has very confusing logic, but keep in mind that you can't use tail or next so this is the way to do it
 DoublyLinkedList.prototype.remove = function (node) {

@@ -1,7 +1,3 @@
-/**
- * @param {number[][]} heights
- * @return {number[][]}
- */
 var pacificAtlantic = function (heights) {
   let rows = heights.length;
   let cols = heights[0].length;
@@ -21,6 +17,10 @@ var pacificAtlantic = function (heights) {
       return;
     }
 
+    /* 
+    your string needs to have some time of delimiter between the variables
+    or you get collisions with 1,12 and 11,2
+    */
     visit.add(`${x},${y}`);
 
     dfs(x + 1, y, heights[x][y], visit);
