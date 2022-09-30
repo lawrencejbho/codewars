@@ -1,3 +1,5 @@
+// leetcode premium
+
 function wallsAndGates(rooms) {
   let rows = rooms.length;
   let cols = rooms[0].length;
@@ -35,7 +37,7 @@ function wallsAndGates(rooms) {
           rooms[row][col] == 0
         )
           continue;
-        if (rooms[row][col] < counter) continue;
+        if (rooms[row][col] <= counter) continue; // need to have an <= here or you'll keep pushing this cell into the queue
         rooms[row][col] = counter;
         queue.push([row, col]);
       }
