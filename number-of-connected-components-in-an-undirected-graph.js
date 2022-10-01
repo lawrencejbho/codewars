@@ -1,31 +1,31 @@
 // leetcode premium
 // union find again
 
-function countComponents(n, edges) {
+var countComponents = function (n, edges) {
   let par = [];
   for (let i = 0; i < n; i++) {
     par.push(i);
   }
   let rank = [];
   for (let i = 0; i < n; i++) {
-    par.push(1);
+    rank.push(1);
   }
 
   function find(n) {
-    let res = n;
-    while (res != par[res]) {
-      par[res] = par[par[res]];
-      res = par[res];
+    let parent = par[n];
+    while (parent != par[parent]) {
+      par[parent] = par[par[parent]];
+      parent = par[parent];
     }
-    return res;
+    return parent;
   }
 
   function union(n1, n2) {
     let p1 = find(n1);
     let p2 = find(n2);
 
-    if (p1 == p2) return 0;
-    if (rank[p2] > rank[p1]) {
+    if (p2 == p1) return 0;
+    if (p2 > p1) {
       par[p1] = p2;
       rank[p2] += rank[p1];
     } else {
@@ -34,9 +34,11 @@ function countComponents(n, edges) {
     }
     return 1;
   }
+
   let result = n;
-  for (let [n1, n2] of edges) {
-    if (union(n1, n2)) result--;
+  for (let [a, b] of edges) {
+    result -= union(a, b);
   }
+
   return result;
-}
+};
