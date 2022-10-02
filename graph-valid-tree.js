@@ -40,3 +40,36 @@ var validTree = function (n, edges) {
 
   return true;
 };
+
+// using DFS instead
+
+var validTree = function (n, edges) {
+  if (edges.length < n - 1) return false;
+  let map = new Map();
+
+  for (let i = 0; i < edges.length; i++) {
+    if (!map.has(edges[i][0])) {
+      map.set(edges[i][0], []);
+    }
+    if (!map.has(edges[i][1])) {
+      map.set(edges[i][1], []);
+    }
+    map.get(edges[i][0]).push(edges[i][1]);
+    map.get(edges[i][1]).push(edges[i][0]);
+  }
+
+  let visit = new Set();
+  function dfs(i, prev) {
+    if (visit.has(i)) return false;
+    visit.add(i);
+
+    if (!map.get(i)) return true;
+
+    for (let child of map.get(i)) {
+      if (child == prev) continue;
+      if (!dfs(child, i)) return false;
+    }
+    return true;
+  }
+  return dfs(0, -1) && visit.size == n;
+};
