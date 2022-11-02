@@ -1,28 +1,20 @@
 // somehow my first code was faster, I think it's something to do with the unnecessary if statement checks everytime
 // the regex will check for numbers and letters and strip everything else
 
-function palindrome(s) {
-  var c = 1;
-  function checker(a, b) {
-    if (a !== b) {
-      c = 2;
-    }
-  }
+var isPalindrome = function (s) {
   let my_string = s.replace(/[^0-9a-zA-Z]/g, "").toLowerCase();
-  if (my_string == "") return true;
   let i = 0;
   let j = my_string.length - 1;
+
   while (i < j) {
-    checker(my_string[i], my_string[j]);
-    if (c == 2) {
+    if (my_string[i] !== my_string[j]) {
       return false;
     }
     i++;
     j--;
   }
-
   return true;
-}
+};
 
 console.log(palindrome("A man, a plan, a canal: Panama"));
 

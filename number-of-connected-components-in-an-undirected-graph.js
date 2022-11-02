@@ -14,7 +14,7 @@ var countComponents = function (n, edges) {
   function find(n) {
     let parent = par[n];
     while (parent != par[parent]) {
-      par[parent] = par[par[parent]];
+      par[parent] = par[par[parent]]; // path compression, I commented out this line actually and got 100%
       parent = par[parent];
     }
     return parent;
