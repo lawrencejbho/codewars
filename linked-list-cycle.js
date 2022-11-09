@@ -59,3 +59,19 @@ var hasCycle = function (head) {
   }
   return false;
 };
+
+var hasCycle = function (head) {
+  let map = new Map();
+  let node = head;
+
+  while (true) {
+    if (!node) return false;
+
+    if (map.has(node.next)) {
+      return true;
+    } else {
+      map.set(node.next, node);
+    }
+    node = node.next;
+  }
+};
