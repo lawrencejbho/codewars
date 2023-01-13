@@ -7,7 +7,6 @@ MyQueue.prototype.push = function (x) {
 };
 
 MyQueue.prototype.pop = function () {
-  let len = this.stack1.length - 1;
   while (this.stack1.length) {
     this.stack2.push(this.stack1.pop());
   }
