@@ -1,21 +1,3 @@
-// first try but not quite right
-function maximumDepth(root) {
-  dfs(root, 1);
-
-  let maxDepth = 0;
-  function dfs(node, level) {
-    if (!node) return;
-    if (level > maxDepth) maxDepth = level;
-    if (node.left) {
-      return dfs(node.left, level + 1);
-    }
-    if (node.right) {
-      return dfs(node.right, level + 1);
-    }
-    return maxDepth;
-  }
-}
-
 // this is a concise way of putting it, basically because it's a binary tree, we can can trust that going all the way down
 // right or left will eventually give us the largest hierarchy
 // we then can compare against two paths to see which is longer and then add 1 for the root node
