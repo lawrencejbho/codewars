@@ -23,16 +23,3 @@ var diameterOfBinaryTree = function (root) {
   dfs(root);
   return max;
 };
-function diameterOfBinaryTree(root) {
-  let max = 0;
-  function dfs(node) {
-    if (!node) return;
-    let left = dfs(node.left);
-    let right = dfs(node.right);
-    max = Math.max(left + right, max);
-    return Math.max(left, right) + 1;
-  }
-
-  dfs(root);
-  return max;
-}

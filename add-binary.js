@@ -34,12 +34,8 @@ var addBinary = function (a, b) {
     } else {
       carry = 0;
     }
-    console.log(value);
     output = value.toString() + output;
-    console.log(output);
   }
-
-  console.log(carry);
 
   if (carry == 1) {
     output = carry + output;

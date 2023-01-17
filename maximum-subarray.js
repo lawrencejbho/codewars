@@ -25,17 +25,21 @@ var maxSubArray = function (nums) {
   return max;
 };
 
-// this is exactly the same thing but condensed using math.max
+// this is exactly the same but using math.max
 
-function maxSubArray2(A) {
-  var prev = 0;
-  var max = -Number.MAX_VALUE;
+var maxSubArray = function (nums) {
+  let last = nums[0];
+  let max = last;
 
-  for (var i = 0; i < A.length; i++) {
-    prev = Math.max(prev + A[i], A[i]);
-    max = Math.max(max, prev);
+  for (let i = 1; i < nums.length; i++) {
+    let num = nums[i];
+    let sum = num + last;
+
+    last = Math.max(sum, num);
+    max = Math.max(last, max);
   }
+
   return max;
-}
+};
 
 console.log(maxSubArray(nums));

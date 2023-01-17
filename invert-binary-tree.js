@@ -17,17 +17,33 @@ function dfs(node) {
   dfs(node.right);
 }
 
-// this is the answer in leetcode
+// using BFS
+
 var invertTree = function (root) {
-  dfs(root);
+  let queue = [];
+
+  if (!root) {
+    return root;
+  }
+
+  queue.push(root);
+
+  while (queue.length) {
+    let currentNode = queue.shift();
+
+    let temp = currentNode?.left;
+    currentNode.left = currentNode?.right;
+    currentNode.right = temp;
+
+    currentNode.children = [currentNode.left, currentNode.right];
+
+    for (let i = 0; i < currentNode.children.length; i++) {
+      let node = currentNode.children[i];
+      if (node) {
+        queue.push(node);
+      }
+    }
+  }
+
   return root;
 };
-
-function dfs(node) {
-  if (!node) return;
-  let temp = node.left;
-  node.left = node.right;
-  node.right = temp;
-  dfs(node.left);
-  dfs(node.right);
-}
