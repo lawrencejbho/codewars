@@ -45,3 +45,49 @@ var addBinary = function (a, b) {
 };
 
 console.log(addBinary(a, b));
+
+// Here is a slightly more intuitive way where you have to reverse the strings so it's easier as you're itereating through the array
+
+var addBinary = function (a, b) {
+  let output = "";
+
+  function reverseString(n) {
+    let string = n.split("").reverse().join("");
+    return string;
+  }
+
+  a = reverseString(a);
+  b = reverseString(b);
+
+  let carry = 0;
+
+  let max_length = Math.max(a.length, b.length);
+
+  for (let i = 0; i < max_length; i++) {
+    if (i < a.length) {
+      digitA = a[i];
+    } else {
+      digitA = 0;
+    }
+
+    if (i < b.length) {
+      digitB = b[i];
+    } else {
+      digitB = 0;
+    }
+
+    let total = parseInt(digitA) + parseInt(digitB) + carry;
+    let char = total % 2;
+    if (total > 1) {
+      carry = 1;
+    } else {
+      carry = 0;
+    }
+    output += char.toString();
+  }
+
+  if (carry > 0) {
+    output += "1";
+  }
+  return reverseString(output);
+};
